@@ -15,4 +15,41 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!-- Strings related to Updating Car Info -->
+
+    <string name="title_activity_update_car">Update Car Information</string>
+    <string name="prompt_make">Select Car Make</string>
+    <string name="prompt_model">Select Car Model</string>
+    <string name="prompt_year">Input Car Year</string>
+
+    <string name="prompt_plate_optional">License Plate (Optional)</string>
+    <string name="prompt_plate_required">License Plate</string>
+    <string name="action_update_car_info">Update Car Information</string>
+
+    <string-array name="make_arrays">
+        <item>Car Make</item>
+        <item>Malaysia</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
+
+    <string-array name="model_arrays">
+        <item>Car Model</item>
+        <item>Malaysia</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
+
+
 </resources>

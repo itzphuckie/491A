@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
     };
     private static final String TAG = LoginActivity.class.getSimpleName();
     private FirebaseAuth mAuth;
+    private FirebaseUser currentUser;
 
     // UI references.
     private AutoCompleteTextView mEmailField;
@@ -209,7 +210,9 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
-                            launchPostParkingSpotActivity();
+                            currentUser = mAuth.getCurrentUser();
+                            //launchPostParkingSpotActivity();
+                            launchUpdateCarInfoActivity();
                         } else {
                             // If sign in fails, display a message to the user.
                             createAccount(email, password);
@@ -227,13 +230,27 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            launchPostParkingSpotActivity();
+            //launchPostParkingSpotActivity();
+            launchUpdateCarInfoActivity();
         }
     }
     private void launchPostParkingSpotActivity(){
         Intent intent = new Intent(getApplicationContext(), PostParkingSpotActivity.class);
+        startActivity(intent);
+    }
+
+    private void launchUpdateCarInfoActivity(){
+        Intent intent = new Intent(getApplicationContext(), UpdateCar.class);
+        Bundle loginData = new Bundle();
+
+        loginData.putString("Username" , String.valueOf(mEmailField.getText()));
+        loginData.putString("Password" , String.valueOf(mPasswordField.getText()));
+        loginData.putString("UserID", currentUser.getUid());
+
+        intent.putExtras(loginData);
+
         startActivity(intent);
     }
     private void createAccount(String email, String password) {
@@ -247,8 +264,18 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            launchPostParkingSpotActivity();
+                            currentUser = mAuth.getCurrentUser();
+                            currentUser.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()){
+                                        Log.d(TAG, "Email Sent");
+                                    }
+                                }
+                            });
+                            //launchPostParkingSpotActivity();
+                            launchUpdateCarInfoActivity();
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
