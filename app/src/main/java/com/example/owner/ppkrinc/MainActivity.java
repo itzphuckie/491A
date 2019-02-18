@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchSearchParkingSpotAct(View view) {
-        Intent intent = new Intent(getApplicationContext(), search_parking.class);
+        Intent intent = new Intent(getApplicationContext(), SearchParking.class);
         startActivity(intent);
     }
 

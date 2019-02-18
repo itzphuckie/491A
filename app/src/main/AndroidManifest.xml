@@ -29,7 +29,7 @@
             android:label="@string/title_activity_my_account"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".search_parking"
+            android:name=".SearchParking"
             android:label="@string/title_activity_search_parking"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

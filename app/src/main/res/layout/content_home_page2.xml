@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_home_page2">
 
     <Button
-        android:id="@+id/signInButton"
+        android:id="@+id/homePageSignInButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"
@@ -21,13 +21,13 @@
         android:onClick="launchLoginPage"
         android:text="Sign In"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/forgotPasswordButton"
+        app:layout_constraintBottom_toTopOf="@+id/homePageRegisterButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/forgotPasswordButton"
+        android:id="@+id/homePageRegisterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -40,7 +40,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInButton" />
+        app:layout_constraintTop_toBottomOf="@+id/homePageSignInButton" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -50,7 +50,7 @@
         android:layout_marginEnd="76dp"
         android:layout_marginRight="76dp"
         android:layout_marginBottom="77dp"
-        app:layout_constraintBottom_toTopOf="@+id/signInButton"
+        app:layout_constraintBottom_toTopOf="@+id/homePageSignInButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo" />

@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_my_account">
 
     <Button
-        android:id="@+id/button14"
+        android:id="@+id/myAccountCarInformationButton"
         android:layout_width="156dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="116dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button17"
+        android:id="@+id/myAccountLogOutButton"
         android:layout_width="156dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="116dp"
@@ -30,10 +30,10 @@
         android:text="log out"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button15" />
+        app:layout_constraintTop_toBottomOf="@+id/myAccountMyInformationButton" />
 
     <Button
-        android:id="@+id/button15"
+        android:id="@+id/myAccountMyInformationButton"
         android:layout_width="156dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="116dp"
@@ -42,6 +42,6 @@
         android:text="My information"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button14" />
+        app:layout_constraintTop_toBottomOf="@+id/myAccountCarInformationButton" />
 
 </android.support.constraint.ConstraintLayout>
