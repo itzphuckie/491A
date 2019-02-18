@@ -24,6 +24,7 @@ public class UpdateCar extends AppCompatActivity {
      */
     private static final String TAG = UpdateCar.class.getSimpleName();
     private String userID;
+    private Bundle loginData;
     private FirebaseFirestore carInfoDB;
 
     // UI references.
@@ -42,7 +43,7 @@ public class UpdateCar extends AppCompatActivity {
         mUpdateCarInfoFormView = findViewById(R.id.car_info_scrollview);
         mProgressView = findViewById(R.id.update_progress);
 
-        Bundle loginData = getIntent().getExtras();
+        loginData = getIntent().getExtras();
         userID = loginData.getString("UserID");
         carInfoDB = FirebaseFirestore.getInstance();
 
