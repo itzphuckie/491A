@@ -17,4 +17,25 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), PostParkingSpotActivity.class);
         startActivity(intent);
     }
+
+    public void launchSearchParkingSpotAct(View view) {
+        Intent intent = new Intent(getApplicationContext(), search_parking.class);
+        startActivity(intent);
+    }
+
+    public void launchRecentMatchesAct(View view) {
+        Intent intent = new Intent(getApplicationContext(), PostParkingSpotActivity.class);
+        startActivity(intent);
+    }
+
+    public void launchMyAccountAct(View view) {
+        Intent intent = new Intent(getApplicationContext(), MyAccount.class);
+        startActivity(intent);
+    }
+
+    public void launchAboutUsAct(View view) {
+
+        Intent intent = new Intent(getApplicationContext(), AboutUs.class);
+        startActivity(intent);
+    }
 }

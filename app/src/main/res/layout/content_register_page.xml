@@ -9,7 +9,7 @@
     tools:showIn="@layout/activity_register_page">
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/nameInput"
         android:layout_width="278dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -34,7 +34,7 @@
         android:layout_marginTop="16dp"
         android:text="Password"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        app:layout_constraintTop_toBottomOf="@+id/nameInput" />
 
     <TextView
         android:id="@+id/textView14"
@@ -48,7 +48,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText8"
+        android:id="@+id/passswordInput"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/confirmPasswordInput"
         android:layout_width="282dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -79,7 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText8" />
+        app:layout_constraintTop_toBottomOf="@+id/passswordInput" />
 
     <TextView
         android:id="@+id/textView15"
@@ -90,10 +90,10 @@
         android:layout_marginTop="8dp"
         android:text="Username"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText9" />
+        app:layout_constraintTop_toBottomOf="@+id/confirmPasswordInput" />
 
     <EditText
-        android:id="@+id/editText10"
+        android:id="@+id/userNameInput"
         android:layout_width="285dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -118,10 +118,10 @@
         android:layout_marginTop="8dp"
         android:text="Email"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText10" />
+        app:layout_constraintTop_toBottomOf="@+id/userNameInput" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/emailInput"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -145,10 +145,10 @@
         android:layout_marginTop="8dp"
         android:text="Phone"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText11" />
+        app:layout_constraintTop_toBottomOf="@+id/emailInput" />
 
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/homeInput"
         android:layout_width="309dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="64dp"
@@ -165,7 +165,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="60dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="5dp"
@@ -174,7 +174,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText12"
+        app:layout_constraintTop_toBottomOf="@+id/homeInput"
         app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

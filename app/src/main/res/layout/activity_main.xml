@@ -25,6 +25,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="60dp"
+        android:onClick="launchSearchParkingSpotAct"
         android:text="Search Parking Spot"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
@@ -36,6 +37,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="60dp"
+        android:onClick="launchRecentMatchesAct"
         android:text="Recent Matches"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button10" />
@@ -47,6 +49,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="60dp"
+        android:onClick="launchMyAccountAct"
         android:text="my account"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button11" />
@@ -58,6 +61,7 @@
         android:layout_marginStart="100dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="68dp"
+        android:onClick="launchAboutUsAct"
         android:text="About us "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button12" />

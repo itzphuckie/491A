@@ -194,7 +194,7 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             currentUser = mAuth.getCurrentUser();
-                            launchHomePage();
+                            launchMainActivity();
 
                         } else {
                             // If sign in fails, display a message to the user.
@@ -209,8 +209,8 @@ public class LoginActivity extends AppCompatActivity {
         // [END sign_in_with_email]
     }
 
-    private void launchHomePage(){
-        Intent intent = new Intent(getApplicationContext(), HomePage.class);
+    private void launchMainActivity(){
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
     }
 
