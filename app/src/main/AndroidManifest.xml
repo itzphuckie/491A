@@ -20,8 +20,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UpdateCar"></activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity
+            android:name=".AboutUs"
+            android:label="@string/title_activity_about_us"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".MyAccount"
+            android:label="@string/title_activity_my_account"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".search_parking"
+            android:label="@string/title_activity_search_parking"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ForgetPass"
+            android:label="@string/title_activity_forget_pass"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RegisterPage"
+            android:label="@string/title_activity_register_page"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".HomePage"
+            android:label="@string/title_activity_home_page"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".UpdateCar" />
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".PostParkingSpotActivity"
             android:label="@string/title_activity_post_parking_spot"

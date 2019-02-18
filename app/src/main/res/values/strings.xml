@@ -50,6 +50,12 @@
         <item>New Zealand</item>
         <item>India</item>
     </string-array>
+    <string name="title_activity_home_page">HomePage</string>
+    <string name="title_activity_register_page">RegisterPage</string>
+    <string name="title_activity_forget_pass">ForgetPass</string>
+    <string name="title_activity_search_parking">search_parking</string>
+    <string name="title_activity_my_account">MyAccount</string>
+    <string name="title_activity_about_us">AboutUs</string>
 
 
 </resources>
