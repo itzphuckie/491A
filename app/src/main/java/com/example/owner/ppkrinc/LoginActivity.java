@@ -194,6 +194,11 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             currentUser = mAuth.getCurrentUser();
+                            
+                            Bundle loginData = new Bundle();
+                            loginData.putString("UserID", currentUser.getUid());
+                            intent.putExtras(loginData);
+                            
                             launchMainActivity();
 
                         } else {
@@ -211,19 +216,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private void launchMainActivity(){
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(intent);
-    }
-
-    private void launchUpdateCarInfoActivity(){
-        Intent intent = new Intent(getApplicationContext(), UpdateCar.class);
-        Bundle loginData = new Bundle();
-
-        loginData.putString("Username" , String.valueOf(mEmailField.getText()));
-        loginData.putString("Password" , String.valueOf(mPasswordField.getText()));
-        loginData.putString("UserID", currentUser.getUid());
-
-        intent.putExtras(loginData);
-
         startActivity(intent);
     }
 
