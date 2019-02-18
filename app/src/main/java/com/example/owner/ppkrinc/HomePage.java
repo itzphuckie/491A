@@ -27,10 +27,10 @@ public class HomePage extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-        }
+//        if (currentUser != null) {
+//            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//            startActivity(intent);
+//        }
     }
 
     public void launchLoginPage(View view) {
