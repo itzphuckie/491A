@@ -73,6 +73,13 @@
                 android:text="Sign In"
                 android:textStyle="bold" />
 
+            <Button
+                android:id="@+id/forgotPasswordButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="launchForgotPasswordAct"
+                android:text="Register" />
+
         </LinearLayout>
     </ScrollView>
 
