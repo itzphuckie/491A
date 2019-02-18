@@ -8,4 +8,12 @@
     tools:context=".AboutUs"
     tools:showIn="@layout/activity_about_us">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="326dp"
+        android:layout_height="298dp"
+        android:textSize="18sp"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="46dp"
+        tools:text="Phone - 888.888.8888 Email - PPKR_HelpDesk@gmail.com  PPKR Inc. was created to solve a common struggle amongst all students. Parking at CSULB as everyone knows is a hassle and causes a lot of frustration. In order to solve this, we have created an easy to use application that allows students to find parking much faster than usual. When a student leaves, they post their parking spot. As a student arrives, they search for a parking spot and the two clients get matched together." />
 </android.support.constraint.ConstraintLayout>

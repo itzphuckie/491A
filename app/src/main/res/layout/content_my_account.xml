@@ -14,8 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="116dp"
         android:layout_marginLeft="116dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="164dp"
         android:text="Car Information"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,8 +26,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="116dp"
         android:layout_marginLeft="116dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="48dp"
         android:text="log out"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button15" />
 
@@ -36,8 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="116dp"
         android:layout_marginLeft="116dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="72dp"
         android:text="My information"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button14" />
 
