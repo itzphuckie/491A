@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 public class MyAccount extends AppCompatActivity {
+    private String userID;
+    private Bundle loginData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,23 @@ public class MyAccount extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        
+        loginData = getIntent().getExtras();
+        userID = loginData.getString("UserID");
+        
+        Button mUpdateCarActivityButton = (Button) findViewById(R.id.button14);
+        mUpdateCarActivityButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchUpdateCarInfoActivity();
+            }
+        });
+    }
+    
+    private void launchUpdateCarInfoActivity(){
+        Intent intent = new Intent(getApplicationContext(), UpdateCar.class);
+        intent.putExtras(loginData);
+        startActivity(intent);
     }
 
 }
