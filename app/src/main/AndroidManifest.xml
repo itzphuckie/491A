@@ -27,6 +27,7 @@
         <activity
             android:name=".MyAccount"
             android:label="@string/title_activity_my_account"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SearchParking"
@@ -58,7 +59,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UpdateCar" />
+        <activity
+            android:name=".UpdateCar"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".MainActivity" />
         <activity
             android:name=".PostParkingSpotActivity"

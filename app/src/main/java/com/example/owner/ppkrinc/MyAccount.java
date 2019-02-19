@@ -1,11 +1,13 @@
 package com.example.owner.ppkrinc;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
 public class MyAccount extends AppCompatActivity {
     private String userID;
@@ -30,8 +32,8 @@ public class MyAccount extends AppCompatActivity {
         loginData = getIntent().getExtras();
         userID = loginData.getString("UserID");
         
-        Button mUpdateCarActivityButton = (Button) findViewById(R.id.button14);
-        mUpdateCarActivityButton.setOnClickListener(new OnClickListener() {
+        Button mUpdateCarActivityButton = (Button) findViewById(R.id.myAccountCarInformationButton);
+        mUpdateCarActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launchUpdateCarInfoActivity();
