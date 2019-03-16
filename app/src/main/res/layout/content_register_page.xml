@@ -15,15 +15,17 @@
         android:ems="10"
         android:hint="Enter your full name"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="64dp" />
 
     <TextView
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="16dp"
         android:text="Password"
         android:textSize="18sp"
@@ -34,8 +36,8 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="40dp"
         android:text="Name"
         android:textSize="18sp"
@@ -44,12 +46,14 @@
 
     <EditText
         android:id="@+id/passswordInput"
-        android:layout_width="370dp"
-        android:layout_height="42dp"
+        android:layout_width="371dp"
+        android:layout_height="41dp"
         android:ems="10"
         android:hint="Enter your password"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="149dp" />
 
     <EditText
@@ -59,15 +63,17 @@
         android:ems="10"
         android:hint="Confirm your password"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@+id/passswordInput"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passswordInput" />
 
     <TextView
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:text="Username"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,15 +86,17 @@
         android:ems="10"
         android:hint="Enter your username"
         android:inputType="textPersonName"
-        app:layout_constraintTop_toBottomOf="@+id/textView15"
-        tools:layout_editor_absoluteX="16dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     <TextView
         android:id="@+id/textView16"
         android:layout_width="62dp"
         android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:text="Email"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,16 +109,18 @@
         android:ems="10"
         android:hint="Enter your school email"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="368dp" />
 
     <TextView
         android:id="@+id/textView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="28dp"
         android:text="Phone Number"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,12 +141,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="395dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="466dp"/>
-
     <EditText
         android:id="@+id/editText6"
         android:layout_width="373dp"
@@ -144,7 +148,9 @@
         android:ems="10"
         android:hint="Enter Phone Number"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="466dp" />
 
 </android.support.constraint.ConstraintLayout>

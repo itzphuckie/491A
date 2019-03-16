@@ -30,10 +30,24 @@ public class MyAccount extends AppCompatActivity {
                 launchUpdateCarInfoActivity();
             }
         });
+
+        Button mUserInfoActivityButton = (Button) findViewById(R.id.myAccountMyInformationButton);
+        mUserInfoActivityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                launchUserInfoActivity();
+            }
+        });
     }
     
     private void launchUpdateCarInfoActivity(){
-        Intent intent = new Intent(getApplicationContext(), UpdateCar.class);
+        Intent intent = new Intent(getApplicationContext(), CarInformation.class);
+        intent.putExtras(loginData);
+        startActivity(intent);
+    }
+
+    private void launchUserInfoActivity(){
+        Intent intent = new Intent(getApplicationContext(), UserInformation.class);
         intent.putExtras(loginData);
         startActivity(intent);
     }

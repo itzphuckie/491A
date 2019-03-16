@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PPKRInc</string>
+    <string name="app_name">PPKR Inc.</string>
     <string name="title_activity_post_parking_spot">Post Parking</string>
     <string name="title_activity_parking_maps">Map</string>
     <string name="title_activity_login">Sign in</string>
