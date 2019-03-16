@@ -20,10 +20,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CarInformation"></activity>
         <activity
             android:name=".AboutUs"
             android:label="@string/title_activity_about_us"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MyAccount"
             android:label="@string/title_activity_my_account"
@@ -36,7 +37,7 @@
         <activity
             android:name=".ForgetPass"
             android:label="@string/title_activity_forget_pass"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.owner.ppkrinc.HomePage" />
@@ -44,7 +45,7 @@
         <activity
             android:name=".RegisterPage"
             android:label="@string/title_activity_register_page"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.owner.ppkrinc.HomePage" />
@@ -61,7 +62,7 @@
         </activity>
         <activity
             android:name=".UpdateCar"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".PostParkingSpotActivity"
