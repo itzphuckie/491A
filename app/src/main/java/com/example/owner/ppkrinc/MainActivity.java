@@ -3,12 +3,16 @@ package com.example.owner.ppkrinc;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
     private String userID;
     private Bundle loginData;
-
+    private Toolbar my_toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,7 +20,25 @@ public class MainActivity extends AppCompatActivity {
         
         loginData = getIntent().getExtras();
         userID = loginData.getString("UserID");
-
+        my_toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(my_toolbar);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        menu.add(0,0,0,"Car Information");
+        menu.add(0,1,0,"Account Information");
+        menu.add(0,2,0,"Log Out");
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == 1){
+            launchUserInfoActivity();
+        };
+        if(item.getItemId() == 0){
+            launchUpdateCarInfoActivity();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void launchPostParkingSpotActivity(View view){
@@ -46,6 +68,18 @@ public class MainActivity extends AppCompatActivity {
     public void launchAboutUsAct(View view) {
 
         Intent intent = new Intent(getApplicationContext(), AboutUs.class);
+        intent.putExtras(loginData);
+        startActivity(intent);
+    }
+    // This is for setting menu
+    private void launchUpdateCarInfoActivity(){
+        Intent intent = new Intent(getApplicationContext(), CarInformation.class);
+        intent.putExtras(loginData);
+        startActivity(intent);
+    }
+
+    private void launchUserInfoActivity(){
+        Intent intent = new Intent(getApplicationContext(), UserInformation.class);
         intent.putExtras(loginData);
         startActivity(intent);
     }
