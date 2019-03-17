@@ -4,7 +4,7 @@
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality. 
+         location permissions for the 'MyLocation' functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -64,7 +64,12 @@
         <activity
             android:name=".UpdateCar"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:icon="@drawable/tab_icon"
+
+            />
         <activity
             android:name=".PostParkingSpotActivity"
             android:label="@string/title_activity_post_parking_spot"
