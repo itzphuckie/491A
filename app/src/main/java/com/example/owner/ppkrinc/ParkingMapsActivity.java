@@ -1,10 +1,11 @@
 package com.example.owner.ppkrinc;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.provider.DocumentsContract;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -29,14 +30,23 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentChange;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import javax.annotation.Nullable;
 
 public class ParkingMapsActivity
         extends FragmentActivity
@@ -51,6 +61,8 @@ public class ParkingMapsActivity
     private DocumentReference docReference;
     private CollectionReference colReference;
     private String matchDocID;
+    private ListenerRegistration reg;
+    private Timestamp timestampID;
 
     // The geographical location where the device is currently located. That is, the last-known
     // location retrieved by the Fused Location Provider.
@@ -64,6 +76,7 @@ public class ParkingMapsActivity
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         db = FirebaseFirestore.getInstance();
+        timestampID = Timestamp.now();
 
 
 
@@ -98,6 +111,7 @@ public class ParkingMapsActivity
                         if (task.isSuccessful()) {
                             // Set the map's camera position to the current location of the device.
                             Location lastKnownLocation = task.getResult();
+
                             Log.e(TAG, lastKnownLocation.toString());
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(lastKnownLocation.getLatitude(),
@@ -130,7 +144,7 @@ public class ParkingMapsActivity
         Map<String, Object> location = new HashMap<>();
 
         String activityType = extraLocationData.getString("type");
-        if(activityType.equalsIgnoreCase("Post")){
+        if (activityType.equalsIgnoreCase("Post")) {
             location.put("descriptor", extraLocationData.getString("descriptor"));
             location.put("lat", lastKnownLocation.getLatitude());
             location.put("locationShare", extraLocationData.getBoolean("locationShare"));
@@ -139,8 +153,7 @@ public class ParkingMapsActivity
             location.put("parkingLot", extraLocationData.get("parkingLot"));
             location.put("rideShare", extraLocationData.getBoolean("rideShare"));
             location.put("userID", currentUser.getUid());
-        }
-        else{
+        } else {
             location.put("lat", lastKnownLocation.getLatitude());
             location.put("long", lastKnownLocation.getLongitude());
             location.put("matchStatus", 0);
@@ -148,55 +161,243 @@ public class ParkingMapsActivity
             location.put("userID", currentUser.getUid());
 
         }
-        location.put("timestamp", Timestamp.now());
-        docReference = db.collection("location"+extraLocationData.getString("type")).document();
+
+        location.put("timestamp", timestampID);
+
+
+        docReference = db.collection("location" + extraLocationData.getString("type")).document(timestampID.toString());
         docReference.set(location);
-        if(docReference.getId() != null){
+        if (docReference.getId() != null) {
             Toast.makeText(ParkingMapsActivity.this,
-                    ""+docReference.getId(),
+                    "" + docReference.getId(),
                     Toast.LENGTH_SHORT).show();
         }
 
 
-        if(activityType.equalsIgnoreCase("Request")){
+        if (activityType.equalsIgnoreCase("Request")) {
+            //waitForPosting();
             colReference = db.collection("locationPost");
             //Query postingQuery = colReference.orderBy("timestamp").limit(1);
+            //colReference
 
-            Query postingQuery = colReference.orderBy("timestamp");
+            ListenerRegistration reg = db.collection("locationPost").addSnapshotListener(new EventListener<QuerySnapshot>() {
 
-            postingQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                 @Override
-                public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                    if(task.isSuccessful()){
+                public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+
+                    if (e != null) {
+                        Toast.makeText(ParkingMapsActivity.this,
+                                "bummer",
+                                Toast.LENGTH_SHORT).show();
+                        Log.w("TAG", "listen:error", e);
+                        return;
+                    }
+
+                    if (queryDocumentSnapshots != null) {
+                        Toast.makeText(ParkingMapsActivity.this,
+                                "success " +queryDocumentSnapshots.size(),
+                                Toast.LENGTH_SHORT).show();
+
+                        List<DocumentSnapshot> query = queryDocumentSnapshots.getDocuments();
+
+                        for(int index = 0; index < query.size(); ){
+                            if(query.get(index).get("matchStatus").toString().equalsIgnoreCase("1")){
+                                query.remove(index);
+                            }
+                            else{
+                                index++;
+                            }
+                        }
+
+                        Toast.makeText(ParkingMapsActivity.this,
+                                "" + query.size(),
+                                Toast.LENGTH_SHORT).show();
                         Map<String, Object> newLoc;
-                        for(QueryDocumentSnapshot document : task.getResult()){
-                            newLoc = document.getData();
-                            if(newLoc.get("matchStatus").toString().equalsIgnoreCase("1")) {
-                                newLoc.put("matchStatus",1);
-                                colReference.document(document.getId()).set(newLoc);
+                        for(DocumentSnapshot doc : query){
+                            newLoc = doc.getData();
+                            Toast.makeText(ParkingMapsActivity.this,
+                                    "" + doc.getId(),
+                                    Toast.LENGTH_SHORT).show();
+                            newLoc.put("matchStatus",1);
+                            colReference.document(doc.getId()).set(newLoc);
+                            Intent intent = new Intent(getApplicationContext(), ConfirmationPage.class);
+                            Bundle extraMatchData = new Bundle();
+
+                            extraMatchData.putString("type", "Request");
+                            extraMatchData.putString("requestID", timestampID.toString());
+                            extraMatchData.putString("postID", doc.getId());
+
+                            intent.putExtras(extraMatchData);
+
+                            startActivity(intent);
+                            break;
+                        }
+
+                        Toast.makeText(ParkingMapsActivity.this,
+                                "success ",
+                                Toast.LENGTH_SHORT).show();
+
+
+                    }
+                    /*
+                    int i = 0;
+                    for(DocumentChange doc : queryDocumentSnapshots.getDocumentChanges()){
+                        switch (doc.getType()) {
+                            case ADDED:
                                 Toast.makeText(ParkingMapsActivity.this,
-                                        "" + document.getData().get("matchStatus") + ((Timestamp)document.getData().get("timestamp")),
+                                        "success " + i,
+                                        Toast.LENGTH_SHORT).show();
+                                i++;
+                                break;
+                            case MODIFIED:
+                                Toast.makeText(ParkingMapsActivity.this,
+                                        "bummer",
                                         Toast.LENGTH_SHORT).show();
                                 break;
-                            }
-                            /*if (matchDocID.length()>0){
+                            case REMOVED:
                                 Toast.makeText(ParkingMapsActivity.this,
-                                        ""+matchDocID,
+                                        "bummer",
                                         Toast.LENGTH_SHORT).show();
-                            }
-                            matchDocID = document.getId();
-                            document.getData().put("matchStatus",1);
-                            colReference.document(matchDocID).set(document);*/
+                                break;
                         }
+                    }
+                    */
+                }
+            });
+
+            //reg.remove();
+        }
+        else{
+            //waitForSearch();
+
+            docReference.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                @Override
+                public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                    if (e != null) {
+                        Toast.makeText(ParkingMapsActivity.this,
+                                "bummer",
+                                Toast.LENGTH_SHORT).show();
+                        Log.w("TAG", "listen:error", e);
+                        return;
+                    }
+
+                    if (documentSnapshot != null && documentSnapshot.exists()) {
+
+                        Toast.makeText(ParkingMapsActivity.this,
+                                "success " ,
+                                Toast.LENGTH_SHORT).show();
+
+                            Intent intent = new Intent(getApplicationContext(), ConfirmationPage.class);
+                            Bundle extraMatchData = new Bundle();
+
+                            extraMatchData.putString("type", "Post");
+                            extraMatchData.putString("postID", timestampID.toString());
+
+                            intent.putExtras(extraMatchData);
+
+                            startActivity(intent);
                     }
                 }
             });
 
-
         }
+            /*
+            colReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
+                @Override
+                public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                    if(queryDocumentSnapshots != null && queryDocumentSnapshots.size()>0){
+                        Toast.makeText(ParkingMapsActivity.this,
+                                queryDocumentSnapshots.size(),
+                                Toast.LENGTH_SHORT).show();
+
+
+                    Query postingQuery = queryDocumentSnapshots.getQuery().orderBy("timestamp");
+                    postingQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()){
+                                Map<String, Object> newLoc;
+                                for(QueryDocumentSnapshot document : task.getResult()){
+                                    newLoc = document.getData();
+                                    if(newLoc.get("matchStatus").toString().equalsIgnoreCase("1")) {
+                                        newLoc.put("matchStatus",1);
+                                        colReference.document(document.getId()).set(newLoc);
+                                        Toast.makeText(ParkingMapsActivity.this,
+                                                "" + document.getData().get("matchStatus") + ((Timestamp)document.getData().get("timestamp")),
+                                                Toast.LENGTH_SHORT).show();
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    });
+                    */
 
     }
 
+    private void waitForPosting(){
+        colReference = db.collection("locationPost");
+        //Query postingQuery = colReference.orderBy("timestamp").limit(1);
+
+        colReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException e) {
+                if(queryDocumentSnapshots != null && queryDocumentSnapshots.size()>0){
+                    Toast.makeText(ParkingMapsActivity.this,
+                            queryDocumentSnapshots.size(),
+                            Toast.LENGTH_SHORT).show();
+
+                    /*
+                    Query postingQuery = queryDocumentSnapshots.getQuery().orderBy("timestamp");
+                    postingQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                            if(task.isSuccessful()){
+                                Map<String, Object> newLoc;
+                                for(QueryDocumentSnapshot document : task.getResult()){
+                                    newLoc = document.getData();
+                                    if(newLoc.get("matchStatus").toString().equalsIgnoreCase("1")) {
+                                        newLoc.put("matchStatus",1);
+                                        colReference.document(document.getId()).set(newLoc);
+                                        Toast.makeText(ParkingMapsActivity.this,
+                                                "" + document.getData().get("matchStatus") + ((Timestamp)document.getData().get("timestamp")),
+                                                Toast.LENGTH_SHORT).show();
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    });
+                    */
+                }
+            }
+        });
+
+        /*
+        Query postingQuery = colReference.orderBy("timestamp");
+
+        postingQuery.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful()){
+                    Map<String, Object> newLoc;
+                    for(QueryDocumentSnapshot document : task.getResult()){
+                        newLoc = document.getData();
+                        if(newLoc.get("matchStatus").toString().equalsIgnoreCase("1")) {
+                            newLoc.put("matchStatus",1);
+                            colReference.document(document.getId()).set(newLoc);
+                            Toast.makeText(ParkingMapsActivity.this,
+                                    "" + document.getData().get("matchStatus") + ((Timestamp)document.getData().get("timestamp")),
+                                    Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+        */
+
+    }
 
     /**
      * Prompts the user for permission to use the device location.
