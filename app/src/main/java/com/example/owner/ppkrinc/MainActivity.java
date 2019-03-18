@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void launchRecentMatchesAct(View view) {
-        Intent intent = new Intent(getApplicationContext(), PostParkingSpotActivity.class);
+        Intent intent = new Intent(getApplicationContext(), RecentMatches.class);
         startActivity(intent);
     }
 
