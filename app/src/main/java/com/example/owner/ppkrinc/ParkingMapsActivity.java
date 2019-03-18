@@ -171,11 +171,11 @@ public class ParkingMapsActivity
                         Map<String, Object> newLoc;
                         for(QueryDocumentSnapshot document : task.getResult()){
                             newLoc = document.getData();
-                            if(newLoc.get("matchStatus").toString().equalsIgnoreCase("0")) {
+                            if(newLoc.get("matchStatus").toString().equalsIgnoreCase("1")) {
                                 newLoc.put("matchStatus",1);
                                 colReference.document(document.getId()).set(newLoc);
                                 Toast.makeText(ParkingMapsActivity.this,
-                                        "" + document.getData().get("matchStatus"),
+                                        "" + document.getData().get("matchStatus") + ((Timestamp)document.getData().get("timestamp")),
                                         Toast.LENGTH_SHORT).show();
                                 break;
                             }
