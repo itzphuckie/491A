@@ -29,14 +29,23 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == 2){
+            launchHomePage();
+        };
         if(item.getItemId() == 1){
             launchUserInfoActivity();
-        };
+        }
         if(item.getItemId() == 0){
             launchUpdateCarInfoActivity();
         }
         return super.onOptionsItemSelected(item);
     }
+    // Logging out
+    private void launchHomePage() {
+        Intent intent = new Intent(getApplicationContext(), HomePage.class);
+        startActivity(intent);
+    }
+
 
     public void launchPostParkingSpotActivity(View view){
         Intent intent = new Intent(getApplicationContext(), PostParkingSpotActivity.class);
