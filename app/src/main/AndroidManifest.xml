@@ -20,7 +20,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UserInformation"></activity>
+        <activity android:name=".RecentMatches"></activity>
+        <activity android:name=".MatchInformation" />
+        <activity android:name=".UserInformation" />
         <activity android:name=".CarInformation" />
         <activity
             android:name=".AboutUs"
@@ -66,10 +68,8 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:icon="@drawable/tab_icon"
-
-            />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".PostParkingSpotActivity"
             android:label="@string/title_activity_post_parking_spot"
