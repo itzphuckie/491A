@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/postParkingMenuItem"
+            android:icon="@android:drawable/ic_dialog_map"
+            android:title="Post Parking" />
+        <item
+            android:id="@+id/searchParkingMenuItem"
+            android:checkable="true"
+            android:icon="@drawable/ic_search_black_24dp"
+            android:title="Search Parking" />
+        <item
+            android:id="@+id/recentMatchesMenuItem"
+            android:icon="@android:drawable/sym_contact_card"
+            android:title="Recent Matches" />
+        <item
+            android:id="@+id/aboutUsMenuItem"
+            android:icon="@android:drawable/ic_menu_info_details"
+            android:title="About Us" />
+    </group>
+
+</menu>
