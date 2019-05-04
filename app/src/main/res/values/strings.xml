@@ -56,6 +56,14 @@
     <string name="title_activity_search_parking">Search Parking</string>
     <string name="title_activity_my_account">My Account</string>
     <string name="title_activity_about_us">About Us</string>
-
+    <string name="title_activity_home">Home</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">PPKR</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_csulbmap">Distance To Csulb</string>
+    <string name="directionsApiKey">AIzaSyAwUgaGaj5Xy_7PmtSVixPpB_WpV9PAevg</string>
 
 </resources>

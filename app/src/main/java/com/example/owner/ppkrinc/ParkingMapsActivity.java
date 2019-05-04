@@ -105,28 +105,25 @@ public class ParkingMapsActivity
         try {
             if (mLocationPermissionGranted) {
                 Task<Location> lastLocation = currentLocation.getLastLocation();
-                lastLocation.addOnCompleteListener(this, new OnCompleteListener<Location>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Location> task) {
-                        if (task.isSuccessful()) {
-                            // Set the map's camera position to the current location of the device.
-                            Location lastKnownLocation = task.getResult();
+                lastLocation.addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Set the map's camera position to the current location of the device.
+                        Location lastKnownLocation = task.getResult();
 
-                            Log.e(TAG, lastKnownLocation.toString());
-                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(lastKnownLocation.getLatitude(),
-                                            lastKnownLocation.getLongitude()), 16));
-                            mMap.addMarker(new MarkerOptions()
-                                    .title("Parking Location")
-                                    .position( new LatLng(lastKnownLocation.getLatitude(),
-                                            lastKnownLocation.getLongitude())).
-                                            draggable(true));
-                            saveLocation(lastKnownLocation);
-                        } else {
-                            Log.d(TAG, "Current location is null. Using defaults.");
-                            Log.e(TAG, "Exception: %s", task.getException());
-                            mMap.getUiSettings().setMyLocationButtonEnabled(false);
-                        }
+                        Log.e(TAG, lastKnownLocation.toString());
+                        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                new LatLng(lastKnownLocation.getLatitude(),
+                                        lastKnownLocation.getLongitude()), 16));
+                        mMap.addMarker(new MarkerOptions()
+                                .title("Parking Location")
+                                .position( new LatLng(lastKnownLocation.getLatitude(),
+                                        lastKnownLocation.getLongitude())).
+                                        draggable(true));
+                        saveLocation(lastKnownLocation);
+                    } else {
+                        Log.d(TAG, "Current location is null. Using defaults.");
+                        Log.e(TAG, "Exception: %s", task.getException());
+                        mMap.getUiSettings().setMyLocationButtonEnabled(false);
                     }
                 });
             }
