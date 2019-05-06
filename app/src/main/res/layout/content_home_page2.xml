@@ -10,9 +10,11 @@
 
     <Button
         android:id="@+id/homePageSignInButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="215dp"
+        android:layout_height="45dp"
         android:layout_marginTop="240dp"
+        android:background="@drawable/button"
+        android:backgroundTint="@color/colorAccent"
         android:onClick="launchLoginPage"
         android:text="Existing User Sign In"
         android:textSize="18sp"
@@ -27,23 +29,26 @@
         android:layout_height="45dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/button"
+        android:backgroundTint="@color/colorAccent"
         android:onClick="launchRegisterPage"
         android:text="New Account"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homePageSignInButton"
-        app:layout_constraintVertical_bias="0.14" />
+        app:layout_constraintVertical_bias="0.118" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="92dp"
+        android:layout_width="0dp"
+        android:layout_height="239dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/ppkr_logo" />
 </android.support.constraint.ConstraintLayout>
