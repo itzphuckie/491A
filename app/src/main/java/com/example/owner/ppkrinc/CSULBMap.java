@@ -157,6 +157,9 @@ public class CSULBMap extends FragmentActivity implements OnMapReadyCallback, Na
                 break;
             case R.id.recentMatchesMenuItem:
                 intent = new Intent(getApplicationContext(), RecentMatches.class);
+            case R.id.chatItem:
+                intent = new Intent(getApplicationContext(), Users.class);
+
 
         }
         if (intent != null) {

@@ -38,9 +38,10 @@ public class LoginActivity extends AppCompatActivity {
 
     // UI references.
     private AutoCompleteTextView mEmailField;
-    private EditText mPasswordField;
+    private EditText mPasswordField,mNameField;
     private View mProgressView;
     private View mLoginFormView;
+    String name, pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +51,10 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailField = (AutoCompleteTextView) findViewById(R.id.email);
-
+        mNameField = (EditText) findViewById(R.id.nameInput);
         mPasswordField = (EditText) findViewById(R.id.password);
+        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+
         mPasswordField.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
@@ -63,10 +66,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 attemptLogin();
             }
         });
@@ -183,7 +187,8 @@ public class LoginActivity extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             currentUser = mAuth.getCurrentUser();
-
+                            UserDetails.username = currentUser.getUid();
+                            UserDetails.password = password;
                             launchMainActivity();
 
                         } else {
