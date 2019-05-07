@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class ConfirmationPage extends AppCompatActivity {
+public class    ConfirmationPage extends AppCompatActivity {
     private  Bundle extraMatchData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
