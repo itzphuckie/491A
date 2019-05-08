@@ -6,6 +6,10 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/myAccountMenuItem"
+            android:icon="@android:drawable/ic_menu_view"
+            android:title="My Account" />
+        <item
             android:id="@+id/postParkingMenuItem"
             android:icon="@android:drawable/ic_dialog_map"
             android:title="Post Parking" />
@@ -26,6 +30,9 @@
             android:id="@+id/chatItem"
             android:icon="@android:drawable/ic_menu_send"
             android:title="Chat" />
+        <item
+            android:id="@+id/logOutMenuItem"
+            android:title="Log Out" />
     </group>
 
 </menu>

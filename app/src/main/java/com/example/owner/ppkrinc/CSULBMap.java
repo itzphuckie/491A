@@ -23,6 +23,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.maps.DirectionsApi;
 import com.google.maps.GeoApiContext;
 import com.google.maps.android.PolyUtil;
@@ -157,9 +158,19 @@ public class CSULBMap extends FragmentActivity implements OnMapReadyCallback, Na
                 break;
             case R.id.recentMatchesMenuItem:
                 intent = new Intent(getApplicationContext(), RecentMatches.class);
+                break;
+            case R.id.myAccountMenuItem:
+                intent = new Intent(getApplicationContext(), MyAccount.class);
+                break;
+            case R.id.logOutMenuItem:
+                FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                firebaseAuth.signOut();
+                finish();
+                break;
+
             case R.id.chatItem:
                 intent = new Intent(getApplicationContext(), Users.class);
-
+                break;
 
         }
         if (intent != null) {
