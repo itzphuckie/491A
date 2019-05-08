@@ -32,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
         if(item.getItemId() == 2){
             launchHomePage();
         };
-        if(item.getItemId() == 1){
-            launchUserInfoActivity();
-        }
         if(item.getItemId() == 0){
             launchUpdateCarInfoActivity();
         }
@@ -78,8 +75,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void launchUserInfoActivity(){
-        Intent intent = new Intent(getApplicationContext(), UserInformation.class);
-        startActivity(intent);
-    }
 }

@@ -1,6 +1,7 @@
 package com.example.owner.ppkrinc;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,14 +16,22 @@ public class MyAccount extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_account);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
+        Drawable backButton = getResources().getDrawable(R.drawable.baseline_arrow_back_black_18dp);
+        toolbar.setNavigationIcon(backButton);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //What to do on back clicked
+            }
+        });
+
         setSupportActionBar(toolbar);
-        
-        loginData = getIntent().getExtras();
-        userID = loginData.getString("UserID");
-        
+
         Button mUpdateCarActivityButton = (Button) findViewById(R.id.myAccountCarInformationButton);
         mUpdateCarActivityButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,13 +40,7 @@ public class MyAccount extends AppCompatActivity {
             }
         });
 
-        Button mUserInfoActivityButton = (Button) findViewById(R.id.myAccountMyInformationButton);
-        mUserInfoActivityButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                launchUserInfoActivity();
-            }
-        });
+
     }
     
     private void launchUpdateCarInfoActivity(){
@@ -46,10 +49,5 @@ public class MyAccount extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void launchUserInfoActivity(){
-        Intent intent = new Intent(getApplicationContext(), UserInformation.class);
-        intent.putExtras(loginData);
-        startActivity(intent);
-    }
 
 }
