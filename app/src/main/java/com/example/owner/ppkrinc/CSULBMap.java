@@ -45,6 +45,7 @@ public class CSULBMap extends FragmentActivity implements OnMapReadyCallback, Na
     private GoogleMap mMap;
     private DrawerLayout drawerLayout;
     private Fragment mDrawer;
+    Bundle loginData;
 
     private GeoApiContext getGeoContext() {
         GeoApiContext geoApiContext = new GeoApiContext();
@@ -68,7 +69,7 @@ public class CSULBMap extends FragmentActivity implements OnMapReadyCallback, Na
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-
+        loginData =  getIntent().getExtras();
     }
 
 
@@ -161,6 +162,7 @@ public class CSULBMap extends FragmentActivity implements OnMapReadyCallback, Na
                 break;
             case R.id.myAccountMenuItem:
                 intent = new Intent(getApplicationContext(), MyAccount.class);
+                intent.putExtras(loginData);
                 break;
             case R.id.logOutMenuItem:
                 FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
