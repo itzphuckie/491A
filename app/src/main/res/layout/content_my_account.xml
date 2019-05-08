@@ -10,42 +10,44 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/myAccountCarInformationButton"
-                android:layout_width="276dp"
-                android:layout_height="57dp"
-                android:layout_marginStart="64dp"
-                android:layout_marginLeft="64dp"
-                android:layout_marginTop="552dp"
-                android:text="Car Information"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/profile_image"
-                android:layout_width="159dp"
-                android:layout_height="150dp"
-                android:layout_marginStart="157dp"
-                android:layout_marginLeft="157dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginEnd="158dp"
-                android:layout_marginRight="158dp"
-                android:layout_marginBottom="373dp"
-                android:src="@drawable/my_account"
-                app:civ_border_color="#00000000"
-                app:civ_border_width="2dp"
-                app:layout_constraintBottom_toTopOf="@+id/myAccountCarInformationButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-        </RelativeLayout>
 
     </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/myAccountCarInformationButton"
+            android:layout_width="276dp"
+            android:layout_height="57dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginLeft="64dp"
+            android:layout_marginTop="552dp"
+            android:text="Car Information"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="159dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="157dp"
+            android:layout_marginLeft="157dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="158dp"
+            android:layout_marginRight="158dp"
+            android:layout_marginBottom="373dp"
+            android:src="@drawable/my_account"
+            app:civ_border_color="#00000000"
+            app:civ_border_width="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/myAccountCarInformationButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
