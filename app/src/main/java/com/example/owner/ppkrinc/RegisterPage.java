@@ -64,9 +64,9 @@ public class RegisterPage extends AppCompatActivity {
                                 user.email = email;
                                 user.name = name;
                                 user.firebaseID = currentUser.getUid();
-                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://ppkr-user.firebaseio.com/user");
+                                FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance("https://ppkr-users.firebaseio.com/");
                                 DatabaseReference myRef = firebaseDatabase.getReference();
-//                                String key = myRef.push().getKey();
+                                String key = myRef.push().getKey();
                                 myRef.child(user.firebaseID).setValue(user);
                             }
                         });
